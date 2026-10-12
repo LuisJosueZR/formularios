@@ -477,15 +477,14 @@ const TaxForm = () => {
         </div>
       </div>
 
-      <div style={{ border: '1px solid #d1d5db', borderRadius: '8px', overflow: 'hidden' }}>
-      </div>
+      
 
 
 
 
-        <br></br>
+        
 
-      <div style={{ border: '1px solid #d1d5db', borderRadius: '8px', overflow: 'hidden' }}>
+      <div style={{ border: '1px solid #d1d5db', borderRadius: '8px', overflow: 'hidden' }}> 
 
         {/* Header */}
         <div style={{ backgroundColor: '#f3f4f6', padding: '12px 16px', borderBottom: '1px solid #d1d5db', display: 'flex', alignItems: 'center' }}>
