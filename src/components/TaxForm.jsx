@@ -330,6 +330,15 @@ const TaxForm = () => {
   const totalsefectuadasal = calculateTotalsefectuadasal();
 
 
+  // Impuesto determinado menos montos a favor, redondeado a 2 decimales
+  const diferencia2 = Math.round((impuestoDeterminado - totalsefectuadasal.efectuadasal) * 100) / 100;
+
+  // Positivo: va a Impuesto Operaciones del Período. Negativo: va a Excedente (en positivo)
+  const impuestoDeterminado2 = diferencia2 > 0 ? diferencia2 : 0;
+  const excedente = diferencia2 < 0 ? Math.abs(diferencia2) : 0;
+
+
+
   const calculateTotalsefectuadaspor = () => {
     const efectuadasporFields = ['169', '170', '172', '171',];
     
@@ -370,6 +379,19 @@ const TaxForm = () => {
   const totalsmultas = calculateTotalsMultas();
   
   
+  // Sumar 196+
+    const interesesV = ['196'];
+    
+    const intereses = interesesV.reduce((sum, key) => {
+      const val = parseFloat(values[key].replace(/,/g, '')) || 0;
+      return sum + val;
+    }, 0);
+  
+    const totalapagar = Math.round((impuestoDeterminado2 + totalsefectuadaspor.efectuadaspor + totalsmultas.multas + intereses) * 100) / 100;
+
+  
+
+
   const rowStyle = {
     display: 'grid',
     gridTemplateColumns: 'repeat(12, 1fr)',
@@ -1217,6 +1239,39 @@ const TaxForm = () => {
       
       <br></br>
 
+       <div style={{ backgroundColor: '#99c4f0', border: '1px solid #d1d5db', borderRadius: '8px', overflow: 'hidden' }}>
+      
+      {/* EXCEDENTE DEL IMPUESTO PARA PRÓXIMO PERÍODO A FAVOR DEL DECLARANTE */}
+          <div style={rowStyle}>
+            <div style={{ gridColumn: 'span 7', display: 'flex', alignItems: 'center' }}>
+              <span style={{ fontSize: '14px', fontWeight: '500' }}>EXCEDENTE DEL IMPUESTO PARA PRÓXIMO PERÍODO A FAVOR DEL DECLARANTE</span>
+            </div>                
+            <div style={{ gridColumn: 'span 2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <CodeLabel code="167=" />
+            </div>
+            <div style={{ gridColumn: 'span 3', fontWeight: '700' }}>
+              <CalculatedField id="167" value={formatDisplay(excedente.toFixed(2))}/>
+            </div>
+          </div>
+
+      {/* TOTAL DE IMPUESTO POR OPERACIONES DEL PERÍODO */}
+          <div style={rowStyle}>
+            <div style={{ gridColumn: 'span 7', display: 'flex', alignItems: 'center' }}>
+              <span style={{ fontSize: '14px', fontWeight: '500' }}>TOTAL DE IMPUESTO POR OPERACIONES DEL PERÍODO</span>
+            </div>                
+            <div style={{ gridColumn: 'span 2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <CodeLabel code="168=" />
+            </div>
+            <div style={{ gridColumn: 'span 3', fontWeight: '700' }}>
+              <CalculatedField id="168" value={formatDisplay(impuestoDeterminado2.toFixed(2))}/>
+            </div>
+          </div>
+          </div>
+          
+       
+
+         <br></br>
+
 
 
         <div style={{ border: '1px solid #d1d5db', borderRadius: '8px', overflow: 'hidden' }}>
@@ -1424,7 +1479,7 @@ const TaxForm = () => {
               <CodeLabel code="198=" />
             </div>
             <div style={{ gridColumn: 'span 3', fontWeight: '700' }}>
-              <CalculatedField id="198" value={formatDisplay(remanente.toFixed(2))}/>
+              <CalculatedField id="198" value={formatDisplay(totalapagar.toFixed(2))}/>
             </div>
           </div>
 
