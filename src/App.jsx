@@ -16,6 +16,7 @@ import Home from './pages/Home'
 import FormularioIVA from './pages/FormularioIVA'
 import FormularioPAC from './pages/FormularioPAC'
 import CalculadoraIVA from './pages/CalculadoraIVA'
+import CalculadoraISR from './pages/CalculadoraISR'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/formulario-iva" element={<FormularioIVA />} />
         <Route path="/formulario-pac" element={<FormularioPAC />} />
         <Route path="/calculadora-iva" element={<CalculadoraIVA />} />
+        <Route path="/calculadora-isr" element={<CalculadoraISR />} />
         <Route path="*" element={<Home />} />
       </Route>
     </Routes>

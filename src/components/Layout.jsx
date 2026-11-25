@@ -35,6 +35,7 @@ export default function Layout() {
         <NavLink to="/formulario-iva" style={linkStyle}>Formulario IVA</NavLink>
         <NavLink to="/formulario-pac" style={linkStyle}>Formulario PAC</NavLink>
         <NavLink to="/calculadora-iva" style={linkStyle}>Calculadora IVA</NavLink>
+        <NavLink to="/calculadora-isr" style={linkStyle}>Calculadora ISR</NavLink>
       </nav>
 
     <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '24px', backgroundColor: 'white' }}>
@@ -44,7 +45,7 @@ export default function Layout() {
         border: '2px solid #f59e0b', 
         borderRadius: '8px', 
         padding: '16px 20px', 
-        marginBottom: '24px',
+        marginBottom: '12px',
         boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
       }}>
         <div style={{ display: 'flex', alignItems: 'start', gap: '12px' }}>
@@ -66,7 +67,7 @@ export default function Layout() {
         border: '1px solid #3b82f6', 
         borderRadius: '6px', 
         padding: '12px 16px', 
-        marginBottom: '20px'
+        marginBottom: '1px'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span style={{ fontSize: '18px' }}>🔒</span>

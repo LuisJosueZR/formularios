@@ -37,20 +37,20 @@ export default function Home() {
         </Link>
       </div>
 
-    
+      <br />
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
-        <Link to="/formulario-iva" style={cardStyle}>
-          <h2 style={{ fontSize: '18px', marginBottom: '8px' }}>📝 Formulario de IVA</h2>
-          <p style={{ fontSize: '14px', color: '#6b7280' }}>
-            Practica el llenado de ventas, compras y la determinación del impuesto.
-          </p>
-        </Link>
-
         <Link to="/calculadora-iva" style={cardStyle}>
           <h2 style={{ fontSize: '18px', marginBottom: '8px' }}>🧮 Calculadora de IVA</h2>
           <p style={{ fontSize: '14px', color: '#6b7280' }}>
             Calcula el 13% de IVA sobre un monto, o separa el IVA de un total.
+          </p>
+        </Link>
+
+        <Link to="/calculadora-isr" style={cardStyle}>
+          <h2 style={{ fontSize: '18px', marginBottom: '8px' }}>🧮 Calculadora de ISR</h2>
+          <p style={{ fontSize: '14px', color: '#6b7280' }}>
+            Calcula el 10% de ISR sobre un monto, o separa el ISR de un total.
           </p>
         </Link>
       </div>
